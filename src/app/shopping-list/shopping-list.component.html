@@ -1,0 +1,44 @@
+<div class="row">
+  <div class="col-xs-10">
+    <app-shopping-edit></app-shopping-edit>
+    <hr />
+    <ul class="list-group">
+      <a
+        class="list-group-item"
+        style="cursor: pointer"
+        *ngFor="let ingredient of ingredients; let i = index"
+        (click)="onEditItem(i)"
+      >
+        {{ ingredient.name }} ({{ ingredient.amount }})
+      </a>
+    </ul>
+    <div id="accordion" *ngFor="let ingredient of ingredients; let i = index">
+      <div class="card">
+        <div class="card-header" id="headingOne">
+          <h5 class="mb-0">
+            <button
+              class="btn btn-link"
+              data-toggle="collapse"
+              [attr.data-target]="'#col' + i"
+              aria-controls="collapseOne"
+            >
+              Collapsible Group Item #1
+            </button>
+          </h5>
+        </div>
+
+        <div
+          id="col{{ i }}"
+          class="collapse"
+          aria-labelledby="headingOne"
+          data-parent="#accordion"
+        >
+          <div class="card-body">
+            {{ i }}
+            {{ ingredient.name }} ({{ ingredient.amount }})
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
